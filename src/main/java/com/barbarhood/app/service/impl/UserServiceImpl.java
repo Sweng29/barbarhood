@@ -2,6 +2,7 @@ package com.barbarhood.app.service.impl;
 
 import com.barbarhood.app.config.JwtTokenProvider;
 import com.barbarhood.app.constants.ProfileStatus;
+import com.barbarhood.app.constants.RoleConstant;
 import com.barbarhood.app.dto.UserDTO;
 import com.barbarhood.app.exception.InvalidInputException;
 import com.barbarhood.app.exception.UserNotFoundException;
@@ -85,9 +86,17 @@ public class UserServiceImpl extends BaseService implements UserService, UserDet
                 .password(passwordEncoder.encode(signUpPayload.getPassword()))
                 .isActive(Boolean.FALSE)
                 .profileStatus(ProfileStatus.APPROVAL_PENDING)
+                .role(buildUserRole())
                 .build();
 
         return UserMapper.map(userRepository.save(user));
+    }
+
+    private Role buildUserRole() {
+        return Role
+                .builder()
+                .roleConstant(RoleConstant.ROLE_USER)
+                .build();
     }
 
     @Override

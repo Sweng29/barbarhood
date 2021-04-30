@@ -25,5 +25,6 @@ public class Role extends BaseEntity {
     @Enumerated(EnumType.STRING)
     @Column(length = 60)
     private RoleConstant roleConstant;
+    private Boolean isActive = Boolean.TRUE;
 
 }

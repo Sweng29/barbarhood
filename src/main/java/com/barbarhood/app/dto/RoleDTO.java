@@ -19,6 +19,7 @@ public class RoleDTO {
 
     private Long roleId;
     private RoleConstant roleConstant;
+    private boolean isActive;
 
     public static RoleDTO of(Role role)
     {
@@ -29,6 +30,7 @@ public class RoleDTO {
                 .builder()
                 .roleId(role.getId())
                 .roleConstant(role.getRoleConstant())
+                .isActive(role.getIsActive())
                 .build();
     }
 

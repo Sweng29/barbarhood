@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 //@Builder
 @Getter
@@ -38,6 +39,7 @@ public class SignUpPayload {
     protected String mobileNumber;
 
     @NotNull(message = "Date of birth can not be null.")
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
     protected Date dateOfBirth;
 
 }
